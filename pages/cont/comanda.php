@@ -9,7 +9,7 @@
  * 
  */
 
-class produto {
+class comanda {
 
     function conteudo($registros = 0) {
 //        if ($registros != null)

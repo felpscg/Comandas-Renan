@@ -22,27 +22,37 @@ $objConteudo = new produto();
 $objComanda = new comandaDAO();
 $objHeader = new htmlHeader();
 $objFooter = new htmlFooter();
-$registros = new produtoDAO();
+$objProduto = new produtoDAO();
 
-if(isset($_POST["act"])){
+if (isset($_POST["act"])) {
+    if ($_POST["act"] == "Incluir") {
+        $objProduto->validaProduto($_POST);
+//        exit();
+    } else if ($_POST["act"] == "Atualizar") {
+        echo 'entrou2';
+        exit();
+    } else if ($_POST["act"] == "Deletar") {
+        echo 'entrou3';
+        exit();
+    }
 //    echo 'entrou';
 //    exit();
-    $objComanda->validaComanda($_POST);
+//    $objComanda->validaComanda($_POST);
 //    $objComanda
 }
 
 /*
-if (isset($_POST["incluir"])) {
-    $objUsuario = new usuarioDAO();
-    $objUsuario->cadastrarUsuario();
-}*/
+  if (isset($_POST["incluir"])) {
+  $objUsuario = new usuarioDAO();
+  $objUsuario->cadastrarUsuario();
+  } */
 
 //$conBD->finalizarBD($linkBD);
 
 
 echo $objHeader->header();
 echo $objMenuInterativo->menu();
-echo $objConteudo->conteudo($registros->consultarProdutoUsuario());
+echo $objConteudo->conteudo($objProduto->consultarProdutoUsuario());
 echo $objFooter->footer();
 //session_abort();
 //fim do arquivo index

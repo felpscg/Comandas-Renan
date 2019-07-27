@@ -82,7 +82,7 @@ class comandaDAO extends conBD {
 //            exit();
             mysqli_query($this->getLinkBD(), $queryUp);
         }
-        header("location:comanda.php");
+        exit();
 //        se não houver o id do usuario relacionada com uma comanda cadastrada no dia criar uma
     }
 
@@ -109,18 +109,12 @@ class comandaDAO extends conBD {
             echo $dados["quatidadeprod$value"] . '<br>';
 
 //            echo $registro["pkusuario"];
-            $queryComandaUnica="SELECT pkcomanda FROM comanda WHERE fkproduto='$value' AND fkusuario='$registroUsuario[pkusuario]'";
-            
-            
-            
-            
-            
             $query = "INSERT INTO `comanda`.`comandas` (`numerocomanda`, `quantidadeproduto`, `fkproduto`, `fkusuario`) "
                     . "VALUES ('$lastId', '$quantidade', '$value', '$registroUsuario[pkusuario]');";
 //            exit();
             mysqli_query($this->getLinkBD(), $query);
 
-
+            
             $queryQt = "SELECT estoque FROM produtos WHERE pkproduto = $value";
             $resultQt = mysqli_query($this->getLinkBD(), $queryQt);
 
@@ -132,18 +126,15 @@ class comandaDAO extends conBD {
             mysqli_query($this->getLinkBD(), $queryUp);
         }
 
-        header("location:comanda.php");
+
+
+        echo "chegou aqui";
+        exit();
 //        se houver o id do usuario relacionada com uma comanda cadastrada no dia adicionar produtos com o mesmo numero da comanda
     }
 
     public function consultaComanda($dados = NULL) {
-        if (isset($_SESSION))
-            session_start();
-        if (!(isset($_SESSION["login"])))
-            header("location:./login.php");
-        $login = $_SESSION["login"];
         
-        $query = "SELECT * FROM comandas AS C, produtos AS P, usuarios AS U WHERE P.pkproduto = C.fkproduto AND C.fkusuario = (SELECT usuarios.pkusuario FROM usuarios WHERE usuarios.email = '$login')";
     }
 
 }

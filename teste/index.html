@@ -190,53 +190,60 @@
             .produto{
                 position: relative;
                 border: 2px solid #f53;
-                min-width: 60%;
+                margin-left: -40%;
+                left:50%;
+                left:50%;
+                min-width: 50%;
+                width: 70%;
                 padding-left: 2em;
+                cursor: pointer;
+                padding-bottom: .7em;
+            }
+            .produto-b{
+                position: relative;
+                left: 10em;
+                margin-top: -3em;
+            }
+            .titulo{
+                font-size: 1.4em;
+            }
+
+            .inicial-comanda{
+
+            }
+            .produto-comanda{
+                position: relative;
+                border: 2px solid #f53;
+                margin-left: -40%;
+                left:51%;
+                min-width: 50%;
+                width: 70%;
+                max-width: 70%;
+                padding-left: 2em;
+                padding-bottom: .7em;
+                margin-bottom: 2em;
             }
         </style>
         <div id="conteudo">
-            <p><span>Produtos</span></p>
             <form action="teste.php" method="POST">
-                <label for="produto1">
-                    <div class="produto">
-                        <p><span>Nome: X-Burger</span></p>
-                        <p><span>Valor: R$ 20.00</span></p>
-                        <p><span>Quantidade: <input type="number" name="quatidadeprod1" value="1" min="1" max="10"/></span>
-                            <span><input type="checkbox" id="produto1" name="produto[]" value="1"/></span></p>
-                    </div>
-                </label>
-                <br>
-                <label for="produto2">
-                    <div class="produto">
-                        <p><span>Nome: X-Burger</span></p>
-                        <p><span>Valor: R$ 20.00</span></p>
-                        <p><span>Quantidade: <input type="number" name="quatidadeprod2" value="1" min="1" max="10"/></span>
-                            <span><input type="checkbox" id="produto2" name="produto[]" value="2"/></span></p>
-                    </div>
-                </label>
-                <br>
-                <label for="produto3">
-                    <div class="produto">
-                        <p><span>Nome: X-Burger</span></p>
-                        <p><span>Valor: R$ 20.00</span></p>
-                        <p><span>Quantidade: <input type="number" name="quatidadeprod3" value="1" min="1" max="10"/></span>
-                            <span><input type="checkbox" id="produto3" name="produto[]" value="3"/></span></p>
-                    </div>
-                </label>
-                <br>
-                <label for="produto4">
-                    <div class="produto">
-                        <p><span>Nome: X-Burger</span></p>
-                        <p><span>Valor: R$ 20.00</span></p>
-                        <p><span>Quantidade: <input type="number" name="quatidadeprod4" value="1" min="1" max="10"/></span>
-                            <span><input type="checkbox" id="produto4" name="produto[]" value="4"/></span></p>
-                    </div>
-                </label>
-                <br>
-                <input type="submit" name="act" value="Incluir"/>
-                <br>
-                <br>
-                <br>
+                <div class='titulo'>
+                    <p><span>Comanda</span></p>
+                    <p><span>Mesa - 01</span></p>
+                </div>
+                <div class='produto-comanda'>
+                    <p><span>Nome: Produto tal</span></p>
+                    <p><span>Quantidade: 5</span></p>
+                    <p><span>Preço Un: R$ 2,00</span></p>
+                </div>
+                <div class='produto-comanda'>
+                    <p><span>Nome: Produto tal 2</span></p>
+                    <p><span>Quantidade: 5</span></p>
+                    <p><span>Preço Un: R$ 2,00</span></p>
+                </div>
+
+                <div class='produto-comanda'>
+                    <p><span>Preço Total: R$ 20,00</span></p>
+                </div>
             </form>
         </div>
         <!----------------------------------RODAPE--------------------------------------->        
