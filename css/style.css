@@ -171,7 +171,7 @@ footer{
     cursor: pointer;
     padding-bottom: .7em;
     margin-bottom: 2em;
-    
+
 }
 .produto-b, .produto-c{
     position: relative;
@@ -201,4 +201,16 @@ footer{
 .desativado{
     background-color: #ddd;
     color: #777;
+}
+.produto-comanda{
+    position: relative;
+    border: 2px solid #f53;
+    margin-left: -40%;
+    left:51%;
+    min-width: 50%;
+    width: 70%;
+    max-width: 70%;
+    padding-left: 2em;
+    padding-bottom: .7em;
+    margin-bottom: 2em;
 }

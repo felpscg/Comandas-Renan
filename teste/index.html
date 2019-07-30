@@ -223,26 +223,69 @@
                 padding-bottom: .7em;
                 margin-bottom: 2em;
             }
+            #mesas{
+                position: relative;
+                width: 90%;
+                min-height:13em;
+                left: 3%;
+                display: block;
+                border: .5px solid #f53;
+                padding-bottom: 2em;
+            }
+            .mesa{
+                position: relative;
+                width: 14em;
+                /*margin: 4.6%;*/
+                margin-top: 2em;
+                margin-left: 4.6%;
+                margin-right: 4.6%;
+                text-align: center;
+                display: inline-block;
+                border: 2px solid #f53;
+                padding-bottom: 0.9em;
+            }
         </style>
         <div id="conteudo">
             <form action="teste.php" method="POST">
                 <div class='titulo'>
-                    <p><span>Comanda</span></p>
-                    <p><span>Mesa - 01</span></p>
-                </div>
-                <div class='produto-comanda'>
-                    <p><span>Nome: Produto tal</span></p>
-                    <p><span>Quantidade: 5</span></p>
-                    <p><span>Preço Un: R$ 2,00</span></p>
-                </div>
-                <div class='produto-comanda'>
-                    <p><span>Nome: Produto tal 2</span></p>
-                    <p><span>Quantidade: 5</span></p>
-                    <p><span>Preço Un: R$ 2,00</span></p>
+                    <p><span>Mesas</span></p>
                 </div>
 
-                <div class='produto-comanda'>
-                    <p><span>Preço Total: R$ 20,00</span></p>
+                <div id='mesas'>
+                    <label for='mesa01' >
+
+                        <div class='mesa'>
+                            <p>Mesa 01</p>
+                            <p>Comandas em Aberto</p>
+                            <input type='submit' name='act' value="AcessarComanda01" title="Acessar"/>
+                            <a href=''>Acessar</a>
+
+                        </div>
+                    </label>
+                    
+                    <div class='mesa'>
+                        <p>Mesa 01</p>
+                        <p>Comandas em Aberto</p>
+                        <input type='submit' id='mesa01' name='act' value="AcessarComanda01" title="Acessar"/>
+                        <a href=''>Acessar</a>
+
+                    </div>
+
+                    <div class='mesa'>
+                        <p>Mesa 01</p>
+                        <p>Comandas em Aberto</p>
+                        <input type='submit' name='act' value="AcessarComanda01" title="Acessar"/>
+                        <a href=''>Acessar</a>
+
+                    </div>
+                    
+                    <div class='mesa'>
+                        <p>Mesa 01</p>
+                        <p>Comandas em Aberto</p>
+                        <input type='submit' name='act' value="AcessarComanda01" title="Acessar"/>
+                        <a href=''>Acessar</a>
+
+                    </div>
                 </div>
             </form>
         </div>

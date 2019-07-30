@@ -22,7 +22,7 @@ class login {
                 . "<p><span>Senha:* </span>\n"
                 . "<input type='password' name='senha'/></p>\n"
                 . "<input type='hidden' name='act' value='cons'/>\n"
-                . "<br><input type='submit' name='cadastrar' value='Cadastrar'/>\n"
+                . "<br>\n"
                 . "<input type='submit' value='Avançar'/>\n"
                 . "</form>\n"
                 . "</div>\n";

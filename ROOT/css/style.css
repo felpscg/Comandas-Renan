@@ -171,7 +171,7 @@ footer{
     cursor: pointer;
     padding-bottom: .7em;
     margin-bottom: 2em;
-    
+
 }
 .produto-b, .produto-c{
     position: relative;
@@ -201,4 +201,29 @@ footer{
 .desativado{
     background-color: #ddd;
     color: #777;
+}
+#mesas{
+    position: relative;
+    width: 90%;
+    min-height:9em;
+    left: 3%;
+    display: block;
+    border: .5px solid #f53;
+    padding-bottom: 2em;
+}
+.mesa{
+    position: relative;
+    width: 14em;
+    /*margin: 4.6%;*/
+    margin-top: 2em;
+    margin-left: 4.6%;
+    margin-right: 4.6%;
+    text-align: center;
+    display: inline-block;
+    border: 2px solid #f53;
+    padding-bottom: 0.9em;
+    cursor:  pointer;
+}
+#mesas input{
+    display: none;
 }

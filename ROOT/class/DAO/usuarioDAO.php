@@ -31,7 +31,12 @@ class usuarioDAO extends conBD {
         } else if (isset($_SESSION["login"]) && isset($_SESSION["senha"])) {
             $login=$_SESSION["login"];
             $senha=$_SESSION["senha"];
-            $query = "SELECT usuarios.nome, usuarios.email, usuarios.cpf, usuarios.rg, usuarios.datanascimento, ENDERECO.rua, ENDERECO.numero, ENDERECO.bairro, ENDERECO.cidade, ENDERECO.estado, ENDERECO.cep, TELEFONE.telefone FROM usuarios,(SELECT * FROM enderecos WHERE enderecos.pkendereco = (SELECT usuarios.fkendereco FROM usuarios where usuarios.email = '$login' AND usuarios.senha = '$senha')) AS ENDERECO,(SELECT * FROM telefones where telefones.pktelefone = (SELECT usuarios.fktelefone FROM usuarios where usuarios.email = '$login' AND usuarios.senha = '$senha')) AS TELEFONE WHERE usuarios.email = '$login' AND usuarios.senha = '$senha'";
+            $query = "SELECT empresas.nome, empresas.email, empresas.cnpj, ENDERECO.rua, ENDERECO.numero, ENDERECO.bairro, ENDERECO.cidade, ENDERECO.estado, ENDERECO.cep, TELEFONE.telefone FROM empresas, ("
+                    . "SELECT * FROM enderecos WHERE enderecos.pkendereco = ("
+                    . "SELECT empresas.fkendereco FROM empresas where empresas.email = '$login' AND empresas.senha = '$senha')) AS ENDERECO, ("
+                    . "SELECT * FROM telefones where telefones.pktelefone = ("
+                    . "SELECT empresas.fktelefone FROM empresas where empresas.email = '$login' AND empresas.senha = '$senha')) AS TELEFONE "
+                    . "WHERE empresas.email = '$login' AND empresas.senha = '$senha'";
             $result = mysqli_query($this->getLinkBD(), $query);
             if(mysqli_num_rows($result) == 1){
                 $registro = mysqli_fetch_array($result);
@@ -102,7 +107,7 @@ class usuarioDAO extends conBD {
         $login = $_SESSION["login"];
         $senha = $_SESSION["senha"];
 
-        $query = "SELECT pkusuario FROM usuarios WHERE usuarios.email = '$login' AND usuarios.senha = '$senha'";
+        $query = "SELECT pkempresa FROM empresas WHERE empresas.email = '$login' AND empresas.senha = '$senha'";
         $result = mysqli_query($this->getLinkBD(), $query) OR DIE(mysqli_error($this->getLinkBD()));
         echo $query;
 //        if(mysqli_error($this->getLinkBD())){

@@ -52,6 +52,7 @@ class produto {
                 . "<p class='titulo'><span>Produtos </span></p>"
                 . "<form action='' method='POST'>"
                 . $conteudoTemp
+                . "<p><span>Número da mesa: <input type='number' name='numeromesa' value='' min='1' max='30' required/></span></p>"
                 . "<input type='submit' name='act' value='Adicionar na Comanda'/>"
                 . "</form>"
                 
