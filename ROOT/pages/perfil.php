@@ -16,7 +16,7 @@ require_once $root . '/class/ext/menuInterativo.php';
 require_once $root . '/class/DAO/usuarioDAO.php';
 $conBD = new conBD();
 //$linkBD =$conBD->conectarBD("Erro interno ao conectar no Banco de dados. Erro em :");
-$objMenuInterativo = new menuInterativo(3);
+$objMenuInterativo = new menuInterativo(4);
 $objConteudo = new perfil();
 $objHeader = new htmlHeader();
 $objFooter = new htmlFooter();

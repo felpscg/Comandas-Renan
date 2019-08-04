@@ -13,8 +13,8 @@ require_once $root.'/class/ext/conBD.php';
 class menuInterativo extends conBD {
 
     private $ativo = array('', '', '', '', '', '', '');
-    private $link = array('index.php', 'produto.php', 'comanda.php', 'mesa.php', 'atendente.php', '', '', 'login.php');
-    private $item = array('Início', 'Produtos', 'Comanda', 'Mesa', 'Atendente', '', '', 'Login');
+    private $link = array('index.php', 'produto.php', 'mesa.php', 'atendente.php', '', '', 'login.php');
+    private $item = array('Início', 'Produtos', 'Mesa', 'Atendente', '', '', 'Login');
     private $conteudoMenu = 'Erro interno, não foi possivel carregar o menu';
     public $sessao = FALSE;
     private $linkBD = '';
@@ -81,10 +81,10 @@ class menuInterativo extends conBD {
             unset($_SESSION['login']);
             unset($_SESSION['senha']);
             unset($_SESSION['senhamd5']);
-            $this->setItem('', 5);
-            $this->setLink('', 5);
-            $this->setItem("Login", 7);
-            $this->setLink("login.php", 7);
+            $this->setItem('', 4);
+            $this->setLink('', 4);
+            $this->setItem("Login", 6);
+            $this->setLink("login.php", 6);
             $this->setSessao(FALSE);
         } else if ((isset($_SESSION['login'])) && ( isset($_SESSION['senhamd5']))) {
             $login = $_SESSION['login'];
@@ -92,10 +92,10 @@ class menuInterativo extends conBD {
             $query = "SELECT usuarios.nome FROM usuarios WHERE email='$login'";
             $result = mysqli_query($linkBD, $query);
             $registro = mysqli_fetch_array($result);
-            $this->setItem('Perfil', 5);
-            $this->setLink('perfil.php', 5);
-            $this->setItem("Sair", 7);
-            $this->setLink("logout.php", 7);
+            $this->setItem('Perfil', 4);
+            $this->setLink('perfil.php', 4);
+            $this->setItem("Sair", 6);
+            $this->setLink("logout.php", 6);
             $this->finalizarBD($linkBD);
             $this->setSessao(TRUE);
         } else {
@@ -110,8 +110,8 @@ class menuInterativo extends conBD {
         $ativo = $this->getAtivo();
 
 
-        $quartoItem = ($item["5"] != '') ? ("<a href='$link[5]'><span id='$ativo[5]'><center>$item[5]</center></span></a>\n") : ('');
-        $quintoItem = ($item["6"] != '') ? ("<a href='$link[6]'><span id='$ativo[6]'><center>$item[6]</center></span></a>\n") : ('');
+        $quartoItem = ($item["4"] != '') ? ("<a href='$link[4]'><span id='$ativo[4]'><center>$item[4]</center></span></a>\n") : ('');
+        $quintoItem = ($item["5"] != '') ? ("<a href='$link[5]'><span id='$ativo[5]'><center>$item[5]</center></span></a>\n") : ('');
 
         $conteudo = "<div id='menu'> \n"
                 . "<div id='logo'> \n"
@@ -121,12 +121,11 @@ class menuInterativo extends conBD {
                 . "<a href='$link[1]'><span id='$ativo[1]'><center>$item[1]</center></span></a>\n"
                 . "<a href='$link[2]'><span id='$ativo[2]'><center>$item[2]</center></span></a>\n"
                 . "<a href='$link[3]'><span id='$ativo[3]'><center>$item[3]</center></span></a>\n"
-                . "<a href='$link[4]'><span id='$ativo[4]'><center>$item[4]</center></span></a>\n"
                 . $quartoItem
                 . $quintoItem
                 . "</div>\n"
                 . "<div id='bt-conectar'>\n"
-                . "<a href='$link[7]'><span><center>$item[7]</center></span></a>\n"
+                . "<a href='$link[6]'><span><center>$item[6]</center></span></a>\n"
                 . "</div>\n"
                 . "</div>\n";
 

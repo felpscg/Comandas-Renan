@@ -30,10 +30,26 @@ class mesaDAO extends conBD {
             session_start();
         } else if (!isset($_SESSION["login"])) {
             header("location:./login.php");
-        } else if ($dados) {
-            $query = "SELECT U.nome AS NOME, U.cpf AS CPF, SUM(P.preco * C.quantidadeproduto) AS PRECOTOTAL FROM mesas AS M, comandas AS C, produtos AS P, usuarios AS U WHERE M.numeromesa ='$dados' AND M.fkcomanda = C.numerocomanda AND C.fkproduto = P.pkproduto AND C.fkusuario = U.pkusuario GROUP BY U.cpf ORDER BY U.nome;";
-            echo $query;
-            exit;
+        } else if ($dados != NULL) {
+            $query = "SELECT U.nome AS NOME, U.cpf AS CPF, SUM(P.preco * C.quantidadeproduto) AS PRECOTOTAL, M.numeromesa AS NUMEROMESA "
+                    . "FROM mesas AS M, comandas AS C, produtos AS P, usuarios AS U "
+                    . "WHERE M.numeromesa ='$dados' "
+                    . "AND M.fkcomanda = C.numerocomanda "
+                    . "AND C.fkproduto = P.pkproduto "
+                    . "AND C.fkusuario = U.pkusuario "
+                    . "GROUP BY U.cpf ORDER BY U.nome;";
+//            echo $query;
+//            exit();
+            $result = mysqli_query($this->getLinkBD(), $query);
+            $dados = array();
+            while ($row = mysqli_fetch_assoc($result)) {
+                $dados[] = $row;
+            }
+
+//            $dados
+//            $dados["result"] = $result;
+            $dados2 = array("act"=>"comandaACT");
+            return $dados2;
         } else if (isset($_SESSION["login"])) {
             $query = "SELECT mesas.numeromesa FROM "
                     . "mesas LEFT JOIN comandas ON comandas.numerocomanda = mesas.fkcomanda "

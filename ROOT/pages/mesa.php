@@ -24,25 +24,26 @@ $objHeader = new htmlHeader();
 $objFooter = new htmlFooter();
 //$registros = new produtoDAO();
 
-if(isset($_POST["act"])){
-//    echo 'entrou';
-//    exit();
-    $objMesa->consultaMesas($_POST["act"]);
-//    $objComanda
+$dados = NULL;
+
+if (isset($_POST["act"])) {
+
+    $dados = $_POST["act"];
+
 }
 
 /*
-if (isset($_POST["incluir"])) {
-    $objUsuario = new usuarioDAO();
-    $objUsuario->cadastrarUsuario();
-}*/
+  if (isset($_POST["incluir"])) {
+  $objUsuario = new usuarioDAO();
+  $objUsuario->cadastrarUsuario();
+  } */
 
 //$conBD->finalizarBD($linkBD);
 
 
 echo $objHeader->header();
 echo $objMenuInterativo->menu();
-echo $objConteudo->conteudo($objMesa->consultaMesas());
+echo $objConteudo->conteudo($objMesa->consultaMesas($dados));
 echo $objFooter->footer();
 //session_abort();
 //fim do arquivo index

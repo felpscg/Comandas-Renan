@@ -29,8 +29,8 @@ class usuarioDAO extends conBD {
         if (!isset($_SESSION)) {
             header("location:./login.php");
         } else if (isset($_SESSION["login"]) && isset($_SESSION["senha"])) {
-            $login=$_SESSION["login"];
-            $senha=$_SESSION["senha"];
+            $login = $_SESSION["login"];
+            $senha = $_SESSION["senha"];
             $query = "SELECT empresas.nome, empresas.email, empresas.cnpj, ENDERECO.rua, ENDERECO.numero, ENDERECO.bairro, ENDERECO.cidade, ENDERECO.estado, ENDERECO.cep, TELEFONE.telefone FROM empresas, ("
                     . "SELECT * FROM enderecos WHERE enderecos.pkendereco = ("
                     . "SELECT empresas.fkendereco FROM empresas where empresas.email = '$login' AND empresas.senha = '$senha')) AS ENDERECO, ("
@@ -38,11 +38,10 @@ class usuarioDAO extends conBD {
                     . "SELECT empresas.fktelefone FROM empresas where empresas.email = '$login' AND empresas.senha = '$senha')) AS TELEFONE "
                     . "WHERE empresas.email = '$login' AND empresas.senha = '$senha'";
             $result = mysqli_query($this->getLinkBD(), $query);
-            if(mysqli_num_rows($result) == 1){
+            if (mysqli_num_rows($result) == 1) {
                 $registro = mysqli_fetch_array($result);
                 return $registro;
-            }
-            else{
+            } else {
                 header("location:./perfil.php");
             }
             exit();
@@ -72,6 +71,7 @@ class usuarioDAO extends conBD {
         $_SESSION["senha"] = $_POST["senha"];
         header("location:./perfil.php");
     }
+
     function atualizarUsuario() {
         if (!isset($_POST))
             session_start();
@@ -80,11 +80,11 @@ class usuarioDAO extends conBD {
         }
 //        filter_input("array", $_POST);
         $queryTelefone = "UPDATE `comanda`.`telefones` SET `telefone`='$_POST[telefone]' WHERE  `pktelefone`=(SELECT fktelefone FROM usuarios WHERE usuarios.email = '$_SESSION[login]');";
-        mysqli_query($this->getLinkBD(), $queryTelefone) OR DIE ("Erro ao Atualizar Registro do Telefone");
+        mysqli_query($this->getLinkBD(), $queryTelefone) OR DIE("Erro ao Atualizar Registro do Telefone");
 //        mysqli_insert_id($this->getLinkBD()) OR DIE("Erro ao Incluir Telefone");
 
-        $queryEndereco = "UPDATE `comanda`.`enderecos` SET `cep`='$_POST[cep]', `rua`='$_POST[rua]', `numero`='$_POST[numero]',`bairro`='$_POST[bairro]',`cidade`='$_POST[cidade]',`estado`='".strtoupper($_POST['estado'])."'  WHERE  `pkendereco`=(SELECT fkendereco FROM usuarios WHERE usuarios.email = '$_SESSION[login]');";
-        mysqli_query($this->getLinkBD(), $queryEndereco) OR DIE ("Erro ao Atualizar Registro do Endereço");
+        $queryEndereco = "UPDATE `comanda`.`enderecos` SET `cep`='$_POST[cep]', `rua`='$_POST[rua]', `numero`='$_POST[numero]',`bairro`='$_POST[bairro]',`cidade`='$_POST[cidade]',`estado`='" . strtoupper($_POST['estado']) . "'  WHERE  `pkendereco`=(SELECT fkendereco FROM usuarios WHERE usuarios.email = '$_SESSION[login]');";
+        mysqli_query($this->getLinkBD(), $queryEndereco) OR DIE("Erro ao Atualizar Registro do Endereço");
 //        $fkendereco = mysqli_insert_id($this->getLinkBD()) OR DIE("Erro ao Incluir Endereco");
 
         $queryUsuario = "UPDATE `comanda`.`usuarios` SET `rg`='$_POST[rg]',`email`='$_POST[email]', `senha` = '$_POST[senha]' WHERE usuarios.email =  '$_SESSION[login]';";
@@ -92,6 +92,7 @@ class usuarioDAO extends conBD {
 //        exit();
         mysqli_query($this->getLinkBD(), $queryUsuario) OR DIE("Erro ao Atualizar Registro do Usuário");
         echo $queryUsuario;
+        header("location:./login.php");
 //        exit();
     }
 
@@ -130,6 +131,30 @@ class usuarioDAO extends conBD {
             . "history.go(-1);"
             . "</script>";
         }
+    }
+
+    function deletaUsuario() {
+
+        if (!isset($_POST))
+            session_start();
+        foreach ($_POST as $key => $value) {
+            echo $key . "->" . $value . "<br>";
+        }
+//        filter_input("array", $_POST);
+        $queryTelefone = "UPDATE `comanda`.`telefones` SET `telefone`='$_POST[telefone]' WHERE  `pktelefone`=(SELECT fktelefone FROM usuarios WHERE usuarios.email = '$_SESSION[login]');";
+        mysqli_query($this->getLinkBD(), $queryTelefone) OR DIE("Erro ao Atualizar Registro do Telefone");
+//        mysqli_insert_id($this->getLinkBD()) OR DIE("Erro ao Incluir Telefone");
+
+        $queryEndereco = "UPDATE `comanda`.`enderecos` SET `cep`='$_POST[cep]', `rua`='$_POST[rua]', `numero`='$_POST[numero]',`bairro`='$_POST[bairro]',`cidade`='$_POST[cidade]',`estado`='" . strtoupper($_POST['estado']) . "'  WHERE  `pkendereco`=(SELECT fkendereco FROM usuarios WHERE usuarios.email = '$_SESSION[login]');";
+        mysqli_query($this->getLinkBD(), $queryEndereco) OR DIE("Erro ao Atualizar Registro do Endereço");
+//        $fkendereco = mysqli_insert_id($this->getLinkBD()) OR DIE("Erro ao Incluir Endereco");
+
+        $queryUsuario = "UPDATE `comanda`.`usuarios` SET `rg`='$_POST[rg]',`email`='$_POST[email]', `senha` = '$_POST[senha]' WHERE usuarios.email =  '$_SESSION[login]';";
+//        echo $queryTelefone."<br>".$queryEndereco."<br>".$queryUsuario;
+//        exit();
+        mysqli_query($this->getLinkBD(), $queryUsuario) OR DIE("Erro ao Atualizar Registro do Usuário");
+        echo $queryUsuario;
+        header("location:./login.php");
     }
 
 }

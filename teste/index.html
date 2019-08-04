@@ -223,7 +223,7 @@
                 padding-bottom: .7em;
                 margin-bottom: 2em;
             }
-            #mesas{
+            #comandas{
                 position: relative;
                 width: 90%;
                 min-height:13em;
@@ -232,7 +232,7 @@
                 border: .5px solid #f53;
                 padding-bottom: 2em;
             }
-            .mesa{
+            .comanda{
                 position: relative;
                 width: 14em;
                 /*margin: 4.6%;*/
@@ -242,50 +242,28 @@
                 text-align: center;
                 display: inline-block;
                 border: 2px solid #f53;
-                padding-bottom: 0.9em;
+                padding-bottom: 0em;
             }
         </style>
         <div id="conteudo">
             <form action="teste.php" method="POST">
                 <div class='titulo'>
-                    <p><span>Mesas</span></p>
+                    <p><span>Comandas em Aberto</span></p>
+                    <p><span>Mesa -01</span></p>
                 </div>
 
-                <div id='mesas'>
-                    <label for='mesa01' >
-
-                        <div class='mesa'>
-                            <p>Mesa 01</p>
-                            <p>Comandas em Aberto</p>
-                            <input type='submit' name='act' value="AcessarComanda01" title="Acessar"/>
-                            <a href=''>Acessar</a>
-
+                <div id='comandas'>
+                    <label for='comanda01' >
+ 
+                        <div class='comanda'>
+                            <p>Nome: Felipe Correa</p>
+                            <p>CPF: 46188259878</p>
+                            <p>Valor Total: R$ 20,00</p>
+                            <input type='submit' id='comanda01' name='act' value="01" style="display:none;" />
+                            <p><span>X Fechar Conta X</span></p>
                         </div>
                     </label>
                     
-                    <div class='mesa'>
-                        <p>Mesa 01</p>
-                        <p>Comandas em Aberto</p>
-                        <input type='submit' id='mesa01' name='act' value="AcessarComanda01" title="Acessar"/>
-                        <a href=''>Acessar</a>
-
-                    </div>
-
-                    <div class='mesa'>
-                        <p>Mesa 01</p>
-                        <p>Comandas em Aberto</p>
-                        <input type='submit' name='act' value="AcessarComanda01" title="Acessar"/>
-                        <a href=''>Acessar</a>
-
-                    </div>
-                    
-                    <div class='mesa'>
-                        <p>Mesa 01</p>
-                        <p>Comandas em Aberto</p>
-                        <input type='submit' name='act' value="AcessarComanda01" title="Acessar"/>
-                        <a href=''>Acessar</a>
-
-                    </div>
                 </div>
             </form>
         </div>
